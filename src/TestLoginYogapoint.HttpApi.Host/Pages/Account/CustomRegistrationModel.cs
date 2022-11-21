@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
@@ -28,11 +27,11 @@ namespace TestLoginYogapoint.Pages.Account
 
         public CustomRegistrationModel(IAccountAppService accountAppService) : base(accountAppService)
         {
-            //Input = new();
-            //Input.UserName = Faker.Name.First();
-            //Input.PhoneNumber = Faker.Phone.Number();
-            //Input.EmailAddress = Faker.Internet.Email(Input.UserName);
-            //Input.Gender = (char)Faker.Enum.Random<Gender>();
+            Input = new();
+            Input.UserName = Faker.Name.First();
+            Input.PhoneNumber = Faker.RandomNumber.Next(10).ToString();
+            Input.EmailAddress = Faker.Internet.Email(Input.UserName);
+            Input.Gender = (char)Faker.Enum.Random<Gender>();
         }
 
         public class IdentityUserExtraProperties : IdentityUser
@@ -52,7 +51,7 @@ namespace TestLoginYogapoint.Pages.Account
                     AppName = "MVC",
                     EmailAddress = Input.EmailAddress,
                     Password = Input.Password,
-                    UserName = Input.UserName,
+                    UserName = Input.EmailAddress,
                     PhoneNumber = Input.PhoneNumber,
                     Gender = Input.Gender,
 
@@ -101,8 +100,8 @@ namespace TestLoginYogapoint.Pages.Account
 
     public enum Gender
     {
-        Male='M',
-        Female='F'
+        Male = 'M',
+        Female = 'F'
     }
 
     public class Inputdata : PostInput

@@ -10,10 +10,5 @@ namespace TestLoginYogapoint.UserExtraProperties
         public static string GenderPropertyTitle = "Gender";
         
         public static int MaxLengthGender = 1;
-
-
-
-
-
     }
 }
